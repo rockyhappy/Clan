@@ -21,7 +21,8 @@ app/src/main/java/com/devrachit/clan/
 - **Zero Framework Coupling**: No `android.*`, `androidx.*`, or `Context` imports.
 - **`model/`**: Pure Kotlin data classes and enums (`ThemeMode`, `TownHall`, `UpgradeQueue`, `WarAttack`).
 - **`repository/`**: Interfaces defining data contracts (`ThemeRepository`).
-- **`usecase/`**: Single-responsibility use cases (`GetThemeModeUseCase`, `SetThemeModeUseCase`, `ToggleThemeModeUseCase`).
+- **`usecase/core/`**: Base contracts (`BaseUseCase`, `BaseNoParamsUseCase`, `BaseSuspendUseCase`, `BaseNoParamsSuspendUseCase`, `BaseFlowUseCase`, `BaseNoParamsFlowUseCase`).
+- **`usecase/`**: Single-responsibility domain use cases inheriting from base contracts (e.g., `GetThemeModeUseCase : BaseNoParamsFlowUseCase<ThemeMode>`, `SetThemeModeUseCase : BaseSuspendUseCase<ThemeMode, Unit>`).
 
 ---
 

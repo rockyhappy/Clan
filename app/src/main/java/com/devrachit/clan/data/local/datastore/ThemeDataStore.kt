@@ -34,11 +34,9 @@ class ThemeDataStore(private val context: Context) {
         }
         .map { preferences ->
             val modeName = preferences[KEY_THEME_MODE] ?: ThemeMode.SYSTEM.name
-            try {
+            runCatching {
                 ThemeMode.valueOf(modeName)
-            } catch (e: IllegalArgumentException) {
-                ThemeMode.SYSTEM
-            }
+            }.getOrDefault(ThemeMode.SYSTEM)
         }
 
     suspend fun saveThemeMode(mode: ThemeMode) {

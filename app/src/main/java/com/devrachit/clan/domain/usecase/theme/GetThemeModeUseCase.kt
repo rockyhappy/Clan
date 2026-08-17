@@ -2,6 +2,7 @@ package com.devrachit.clan.domain.usecase.theme
 
 import com.devrachit.clan.domain.model.ThemeMode
 import com.devrachit.clan.domain.repository.ThemeRepository
+import com.devrachit.clan.domain.usecase.core.BaseNoParamsFlowUseCase
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -9,6 +10,7 @@ import kotlinx.coroutines.flow.Flow
  */
 class GetThemeModeUseCase(
     private val themeRepository: ThemeRepository
-) {
-    operator fun invoke(): Flow<ThemeMode> = themeRepository.themeMode
+) : BaseNoParamsFlowUseCase<ThemeMode> {
+
+    override operator fun invoke(): Flow<ThemeMode> = themeRepository.themeMode
 }
