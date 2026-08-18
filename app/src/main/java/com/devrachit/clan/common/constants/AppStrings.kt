@@ -40,19 +40,38 @@ object AppStrings {
     }
 
     object Splash {
+        const val HERO_TITLE = "CLAN"
+        const val HERO_SUBTITLE = "Clash Helper & Tracker"
+        const val HERO_DESC = "Track upgrades, plan attacks, and dominate your Clan Wars."
+        const val ENTER_CTA = "GET STARTED"
+        
+        // Keep existing for backward compatibility
         const val PAGE_1_TITLE = "Clash Helper & Tracker"
         const val PAGE_1_SUBTITLE = "BUILD & UPGRADE"
         const val PAGE_1_DESC = "Track upgrades, analyze army compositions, manage builder queues, and never lose track of a village upgrade."
-
         const val PAGE_2_TITLE = "Resource & Lab Analytics"
         const val PAGE_2_SUBTITLE = "MAX EFFICIENCY"
         const val PAGE_2_DESC = "Calculate exact loot requirements, research lab timers, and optimize your dark elixir & hero progression."
-
         const val PAGE_3_TITLE = "War Planning & Clan Sync"
         const val PAGE_3_SUBTITLE = "CHAMPION LEAGUE"
         const val PAGE_3_DESC = "Coordinate war attacks with clan mates, log enemy base notes, track star counts, and lead your Clan to victory!"
-
         const val ENTER_VILLAGE_CTA = "ENTER CLAN VILLAGE"
+    }
+
+    object Auth {
+        const val IMPORT_TITLE = "Import Your Village"
+        const val IMPORT_SUBTITLE = "VILLAGE DATA"
+        const val IMPORT_DESC = "Paste the JSON exported from Clash of Clans to import your village data, troop levels, and upgrade progress."
+        const val JSON_PLACEHOLDER = "Paste your village JSON here..."
+        const val JSON_LABEL = "Village JSON Data"
+        const val HOW_TO_GET_JSON_TITLE = "How to get your village JSON?"
+        const val HOW_TO_STEP_1 = "1. Open Clash of Clans app"
+        const val HOW_TO_STEP_2 = "2. Go to Settings"
+        const val HOW_TO_STEP_3 = "3. Tap on 'Export Village Data'"
+        const val HOW_TO_STEP_4 = "4. Copy the JSON to clipboard"
+        const val HOW_TO_STEP_5 = "5. Paste it in the field above"
+        const val IMPORT_CTA = "IMPORT VILLAGE"
+        const val SCREENSHOTS_COMING_SOON = "Detailed screenshots will be added soon."
     }
 
     object Dashboard {

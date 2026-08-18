@@ -29,7 +29,7 @@ Welcome to the official developer and AI agent documentation for the **Clan (Cla
 ---
 
 ### 🚀 4. Feature Specifications
-- **[`docs/features/SPLASH_ONBOARDING.md`](file:///E:/Nodejs%20Projects/Clan/docs/features/SPLASH_ONBOARDING.md)**: 3-page sliding onboarding pager with Canvas vector illustrations and live theme switcher.
+- **[`docs/features/SPLASH_ONBOARDING.md`](file:///E:/Nodejs%20Projects/Clan/docs/features/SPLASH_ONBOARDING.md)**: 3-page sliding onboarding pager splash screen, Village import Auth screen, and Jetpack Navigation 3 implementation.
 - **[`docs/features/THEME_MANAGEMENT.md`](file:///E:/Nodejs%20Projects/Clan/docs/features/THEME_MANAGEMENT.md)**: Live Day/Night theme toggling with disk persistence.
 
 ### 🤖 5. AI Agents, Rules & Skills (`.agents/`)
