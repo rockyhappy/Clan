@@ -42,6 +42,9 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.devrachit.clan.common.assets.Assets.DarkElixirStorage
+import com.devrachit.clan.common.assets.Assets.ElixirStorage
+import com.devrachit.clan.common.assets.Assets.TownHall
 import com.devrachit.clan.common.constants.AppStrings
 import com.devrachit.clan.presentation.components.button.ClanButton
 import com.devrachit.clan.presentation.components.button.ClanButtonVariant
@@ -71,21 +74,21 @@ fun SplashScreen(
             subtitle = AppStrings.Splash.PAGE_1_SUBTITLE,
             description = AppStrings.Splash.PAGE_1_DESC,
             badgeColor = gold,
-            drawIcon = { drawTownHallIcon(gold, goldDark) }
+            iconUrl = TownHall[14]
         ),
         SplashPage(
             title = AppStrings.Splash.PAGE_2_TITLE,
             subtitle = AppStrings.Splash.PAGE_2_SUBTITLE,
             description = AppStrings.Splash.PAGE_2_DESC,
             badgeColor = elixir,
-            drawIcon = { drawResourceFlaskIcon(elixir, darkElixir) }
+            iconUrl = ElixirStorage[10]
         ),
         SplashPage(
             title = AppStrings.Splash.PAGE_3_TITLE,
             subtitle = AppStrings.Splash.PAGE_3_SUBTITLE,
             description = AppStrings.Splash.PAGE_3_DESC,
             badgeColor = gems,
-            drawIcon = { drawClanWarShieldIcon(gold, warAttack) }
+            iconUrl = DarkElixirStorage[10]
         )
     )
 
@@ -212,7 +215,7 @@ private class SplashPage(
     val subtitle: String,
     val description: String,
     val badgeColor: Color,
-    val drawIcon: DrawScope.() -> Unit
+    val iconUrl: String
 )
 
 @Composable
@@ -237,11 +240,11 @@ private fun SplashPageContent(page: SplashPage) {
                 ),
             contentAlignment = Alignment.Center
         ) {
-            Canvas(
+            coil.compose.AsyncImage(
+                model = page.iconUrl,
+                contentDescription = page.title,
                 modifier = Modifier.size(150.dp)
-            ) {
-                page.drawIcon(this)
-            }
+            )
         }
 
         Spacer(modifier = Modifier.height(ClanTheme.spacing.large))
@@ -281,108 +284,4 @@ private fun SplashPageContent(page: SplashPage) {
             lineHeight = 22.sp
         )
     }
-}
-
-// ══════════════════════════════════════════════
-// CANVAS VECTOR ILLUSTRATIONS (Clash of Clans)
-// ══════════════════════════════════════════════
-
-private fun DrawScope.drawTownHallIcon(primaryGold: Color, shadowGold: Color) {
-    val centerX = size.width / 2
-    val centerY = size.height / 2
-
-    // Castle Roof Peak
-    val roof = Path().apply {
-        moveTo(centerX, centerY - 60f)
-        lineTo(centerX + 55f, centerY - 15f)
-        lineTo(centerX - 55f, centerY - 15f)
-        close()
-    }
-    drawPath(roof, color = shadowGold)
-
-    // Base Fortress
-    drawRoundRect(
-        color = primaryGold,
-        topLeft = Offset(centerX - 45f, centerY - 15f),
-        size = Size(90f, 70f),
-        cornerRadius = CornerRadius(10f)
-    )
-
-    // Fortress Doorway
-    val door = Path().apply {
-        moveTo(centerX - 14f, centerY + 55f)
-        lineTo(centerX - 14f, centerY + 20f)
-        quadraticTo(centerX, centerY + 5f, centerX + 14f, centerY + 20f)
-        lineTo(centerX + 14f, centerY + 55f)
-        close()
-    }
-    drawPath(door, color = Color(0xFF23140B))
-
-    // Battlements
-    drawRect(color = shadowGold, topLeft = Offset(centerX - 40f, centerY - 25f), size = Size(14f, 12f))
-    drawRect(color = shadowGold, topLeft = Offset(centerX - 7f, centerY - 25f), size = Size(14f, 12f))
-    drawRect(color = shadowGold, topLeft = Offset(centerX + 26f, centerY - 25f), size = Size(14f, 12f))
-}
-
-private fun DrawScope.drawResourceFlaskIcon(elixirColor: Color, darkElixirColor: Color) {
-    val centerX = size.width / 2
-    val centerY = size.height / 2
-
-    // Main Elixir Flask Vessel
-    drawCircle(
-        color = elixirColor,
-        radius = 45f,
-        center = Offset(centerX - 15f, centerY + 15f)
-    )
-    drawRoundRect(
-        color = elixirColor,
-        topLeft = Offset(centerX - 28f, centerY - 40f),
-        size = Size(26f, 35f),
-        cornerRadius = CornerRadius(6f)
-    )
-
-    // Secondary Dark Elixir Flask
-    drawCircle(
-        color = darkElixirColor,
-        radius = 32f,
-        center = Offset(centerX + 32f, centerY + 10f)
-    )
-    drawRoundRect(
-        color = darkElixirColor,
-        topLeft = Offset(centerX + 22f, centerY - 30f),
-        size = Size(20f, 26f),
-        cornerRadius = CornerRadius(4f)
-    )
-
-    // Liquid Highlight Gleams
-    drawCircle(color = Color.White.copy(alpha = 0.7f), radius = 7f, center = Offset(centerX - 28f, centerY + 5f))
-    drawCircle(color = Color.White.copy(alpha = 0.5f), radius = 3.5f, center = Offset(centerX - 18f, centerY + 22f))
-}
-
-private fun DrawScope.drawClanWarShieldIcon(goldAccent: Color, warRed: Color) {
-    val centerX = size.width / 2
-    val centerY = size.height / 2
-
-    // Main War Shield Body
-    val shieldPath = Path().apply {
-        moveTo(centerX, centerY - 60f)
-        lineTo(centerX + 50f, centerY - 38f)
-        lineTo(centerX + 50f, centerY + 15f)
-        quadraticTo(centerX + 45f, centerY + 60f, centerX, centerY + 70f)
-        quadraticTo(centerX - 45f, centerY + 60f, centerX - 50f, centerY + 15f)
-        lineTo(centerX - 50f, centerY - 38f)
-        close()
-    }
-    drawPath(shieldPath, color = warRed, style = Fill)
-
-    // Gold Outer Shield Rim
-    drawPath(
-        shieldPath,
-        color = goldAccent,
-        style = Stroke(width = 7f, cap = StrokeCap.Round, join = StrokeJoin.Round)
-    )
-
-    // Center Gold Star Emblem
-    drawCircle(color = goldAccent, radius = 16f, center = Offset(centerX, centerY))
-    drawCircle(color = Color.White, radius = 7f, center = Offset(centerX, centerY))
 }

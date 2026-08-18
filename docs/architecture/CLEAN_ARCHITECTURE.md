@@ -43,4 +43,6 @@ app/src/main/java/com/devrachit/clan/
 
 ## 4. `common/` Layer (Shared Helpers)
 - **`constants/`**: `AppStrings.kt` (Centralized strings), `Constants.kt` (Global system keys).
+- **`assets/`**: `BaseAsset` interface (`core/BaseAsset.kt`), entity implementations (`townhall/TownHall.kt`, `goldmine/GoldMine.kt`), registry (`Assets.kt`).
 - **`utils/`**: Time calculation, resource formatting helpers.
+
