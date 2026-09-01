@@ -1,4 +1,4 @@
-package com.devrachit.clan.presentation.splash
+package com.devrachit.clan.presentation.screens.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,8 +13,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateListOf
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.runtime.NavEntry
-import com.devrachit.clan.presentation.auth.AuthScreen
-import com.devrachit.clan.presentation.main.MainActivity
+import com.devrachit.clan.presentation.screens.auth.AuthScreen
+import com.devrachit.clan.presentation.screens.main.MainActivity
 import com.devrachit.clan.presentation.navigation.AuthRoute
 import com.devrachit.clan.presentation.navigation.SplashRoute
 import com.devrachit.clan.presentation.theme.ClanTheme

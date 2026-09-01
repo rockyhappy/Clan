@@ -1,4 +1,4 @@
-package com.devrachit.clan.presentation.auth
+package com.devrachit.clan.presentation.screens.auth
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background

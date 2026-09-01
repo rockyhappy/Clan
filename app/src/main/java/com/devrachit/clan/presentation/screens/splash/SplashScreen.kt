@@ -1,4 +1,4 @@
-package com.devrachit.clan.presentation.splash
+package com.devrachit.clan.presentation.screens.splash
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.devrachit.clan.common.assets.Assets.DarkElixirStorage
 import com.devrachit.clan.common.assets.Assets.ElixirStorage
 import com.devrachit.clan.common.assets.Assets.TownHall
@@ -227,7 +228,7 @@ private fun SplashPageContent(page: SplashPage) {
                 ),
             contentAlignment = Alignment.Center
         ) {
-            coil.compose.AsyncImage(
+            AsyncImage(
                 model = page.iconUrl,
                 contentDescription = page.title,
                 modifier = Modifier.size(150.dp)

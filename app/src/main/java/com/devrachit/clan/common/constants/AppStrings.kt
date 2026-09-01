@@ -59,6 +59,7 @@ object AppStrings {
     }
 
     object Auth {
+        const val EMPTY_STRING = ""
         const val IMPORT_TITLE = "Import Your Village"
         const val IMPORT_SUBTITLE = "VILLAGE DATA"
         const val IMPORT_DESC = "Paste the JSON exported from Clash of Clans to import your village data, troop levels, and upgrade progress."

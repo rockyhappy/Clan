@@ -1,4 +1,4 @@
-package com.devrachit.clan.presentation.main
+package com.devrachit.clan.presentation.screens.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

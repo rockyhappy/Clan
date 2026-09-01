@@ -1,4 +1,4 @@
-package com.devrachit.clan.presentation.splash
+package com.devrachit.clan.presentation.screens.splash
 
 import androidx.annotation.DrawableRes
 
