@@ -4,9 +4,8 @@ import com.devrachit.clan.domain.model.ThemeMode
 import com.devrachit.clan.domain.repository.ThemeRepository
 import com.devrachit.clan.domain.usecase.core.BaseSuspendUseCase
 import kotlinx.coroutines.flow.first
-
 /**
- * UseCase to toggle theme mode between Light and Dark.
+ * UseCase to toggle the current ThemeMode (Light <-> Dark).
  */
 class ToggleThemeModeUseCase(
     private val themeRepository: ThemeRepository

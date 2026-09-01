@@ -1,4 +1,4 @@
-package com.devrachit.clan.di
+package com.devrachit.clan.di.modules
 
 import com.devrachit.clan.domain.repository.AuthRepository
 import com.devrachit.clan.domain.repository.ThemeRepository
@@ -15,10 +15,6 @@ import dagger.hilt.components.SingletonComponent
 
 /**
  * Hilt module providing domain UseCase instances.
- *
- * UseCases are intentionally NOT scoped — a new instance is created per injection
- * point. They are lightweight wrappers with no mutable state, so sharing a
- * singleton offers no benefit and would complicate testing.
  */
 @Module
 @InstallIn(SingletonComponent::class)

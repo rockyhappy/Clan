@@ -4,12 +4,9 @@ import com.devrachit.clan.domain.repository.AuthRepository
 import com.devrachit.clan.domain.usecase.core.BaseNoParamsFlowUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-
 /**
- * Observes the authentication state as a continuous [Flow] of [Boolean].
- *
- * Returns `true` when a non-empty auth token is stored in the DataStore,
- * `false` otherwise. The flow automatically re-emits whenever the token changes.
+ * Observes the current authentication status.
+ * Returns true if the user is authenticated (auth token exists).
  */
 class CheckAuthStatusUseCase(
     private val authRepository: AuthRepository
