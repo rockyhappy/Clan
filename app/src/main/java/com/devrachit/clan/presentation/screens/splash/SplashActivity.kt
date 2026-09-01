@@ -8,9 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateListOf
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.runtime.NavEntry
 import com.devrachit.clan.presentation.screens.auth.AuthScreen
@@ -19,15 +19,15 @@ import com.devrachit.clan.presentation.navigation.AuthRoute
 import com.devrachit.clan.presentation.navigation.SplashRoute
 import com.devrachit.clan.presentation.theme.ClanTheme
 import com.devrachit.clan.presentation.theme.ThemeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val themeViewModel: ThemeViewModel = viewModel(
-                factory = ThemeViewModel.provideFactory(this@SplashActivity)
-            )
+            val themeViewModel: ThemeViewModel = hiltViewModel()
             val themeMode by themeViewModel.themeMode.collectAsState()
             val systemDark = isSystemInDarkTheme()
             val isDarkTheme = themeMode.isDark(systemDark)
@@ -42,8 +42,11 @@ class SplashActivity : ComponentActivity() {
                             is SplashRoute -> NavEntry(
                                 key = key,
                                 content = {
+                                    // Read isDarkTheme from the outer collected state —
+                                    // this lambda re-executes on recomposition so it
+                                    // always reflects the latest themeMode value.
                                     SplashScreen(
-                                        isDarkTheme = isDarkTheme,
+                                        isDarkTheme = themeMode.isDark(systemDark),
                                         onToggleTheme = { themeViewModel.toggleTheme(systemDark) },
                                         onGetStarted = { backStack.add(AuthRoute) }
                                     )
@@ -53,7 +56,7 @@ class SplashActivity : ComponentActivity() {
                                 key = key,
                                 content = {
                                     AuthScreen(
-                                        isDarkTheme = isDarkTheme,
+                                        isDarkTheme = themeMode.isDark(systemDark),
                                         onToggleTheme = { themeViewModel.toggleTheme(systemDark) },
                                         onImport = {
                                             startActivity(Intent(this@SplashActivity, MainActivity::class.java))

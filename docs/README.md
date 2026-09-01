@@ -14,7 +14,8 @@ Welcome to the official developer and AI agent documentation for the **Clan (Cla
 
 ### 🏛️ 2. Architecture & Patterns
 - **[`docs/architecture/CLEAN_ARCHITECTURE.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/CLEAN_ARCHITECTURE.md)**: Clean Architecture layer breakdown (`common`, `domain`, `data`, `presentation`), UDF, state flow.
-- **[`docs/architecture/DATASTORE_PERSISTENCE.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/DATASTORE_PERSISTENCE.md)**: Preferences DataStore implementation, repository pattern, and use cases.
+- **[`docs/architecture/DATASTORE_PERSISTENCE.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/DATASTORE_PERSISTENCE.md)**: Preferences DataStore implementation, generic utilities, repository pattern, and use cases.
+- **[`docs/architecture/DEPENDENCY_INJECTION.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/DEPENDENCY_INJECTION.md)**: Dagger Hilt DI setup, module hierarchy, annotation reference, and adding new features.
 - **[`docs/architecture/ASSET_MANAGEMENT.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/ASSET_MANAGEMENT.md)**: `BaseAsset` interface contract, entity implementations, and asset registry.
 
 

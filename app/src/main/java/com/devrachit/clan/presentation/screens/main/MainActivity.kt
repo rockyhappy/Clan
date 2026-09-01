@@ -38,7 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.devrachit.clan.common.constants.AppStrings
 import com.devrachit.clan.presentation.components.button.ClanButton
 import com.devrachit.clan.presentation.components.button.ClanButtonVariant
@@ -51,15 +51,15 @@ import com.devrachit.clan.presentation.components.text.ClanTitleText
 import com.devrachit.clan.presentation.components.text.ClanWarBannerText
 import com.devrachit.clan.presentation.theme.ClanTheme
 import com.devrachit.clan.presentation.theme.ThemeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val themeViewModel: ThemeViewModel = viewModel(
-                factory = ThemeViewModel.provideFactory(this@MainActivity)
-            )
+            val themeViewModel: ThemeViewModel = hiltViewModel()
             val themeMode by themeViewModel.themeMode.collectAsState()
             val systemDark = isSystemInDarkTheme()
             val isDarkTheme = themeMode.isDark(systemDark)
