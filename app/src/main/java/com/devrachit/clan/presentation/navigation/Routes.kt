@@ -1,9 +1,11 @@
 package com.devrachit.clan.presentation.navigation
 
+import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-data object SplashRoute
+data object SplashRoute : NavKey
 
 @Serializable
-data object AuthRoute
+data object AuthRoute : NavKey
+

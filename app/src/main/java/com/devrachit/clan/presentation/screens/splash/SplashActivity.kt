@@ -11,6 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateListOf
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.runtime.NavEntry
 import com.devrachit.clan.presentation.screens.auth.AuthScreen
@@ -20,6 +21,8 @@ import com.devrachit.clan.presentation.navigation.SplashRoute
 import com.devrachit.clan.presentation.theme.ClanTheme
 import com.devrachit.clan.presentation.theme.ThemeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.rememberNavBackStack
 
 @AndroidEntryPoint
 class SplashActivity : ComponentActivity() {
@@ -28,12 +31,12 @@ class SplashActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val themeViewModel: ThemeViewModel = hiltViewModel()
-            val themeMode by themeViewModel.themeMode.collectAsState()
+            val themeMode by themeViewModel.themeMode.collectAsStateWithLifecycle()
             val systemDark = isSystemInDarkTheme()
             val isDarkTheme = themeMode.isDark(systemDark)
 
             ClanTheme(darkTheme = isDarkTheme) {
-                val backStack = remember { mutableStateListOf<Any>(SplashRoute) }
+                val backStack = rememberNavBackStack(SplashRoute as NavKey)
 
                 NavDisplay(
                     backStack = backStack,
@@ -48,7 +51,7 @@ class SplashActivity : ComponentActivity() {
                                     SplashScreen(
                                         isDarkTheme = themeMode.isDark(systemDark),
                                         onToggleTheme = { themeViewModel.toggleTheme(systemDark) },
-                                        onGetStarted = { backStack.add(AuthRoute) }
+                                        onGetStarted = {  backStack[backStack.lastIndex] = AuthRoute as NavKey }
                                     )
                                 }
                             )
