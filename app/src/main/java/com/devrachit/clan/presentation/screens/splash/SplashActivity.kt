@@ -23,6 +23,7 @@ import com.devrachit.clan.presentation.theme.ThemeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.rememberNavBackStack
+import com.devrachit.clan.presentation.navigation.rememberNavHost
 
 @AndroidEntryPoint
 class SplashActivity : ComponentActivity() {
@@ -36,10 +37,10 @@ class SplashActivity : ComponentActivity() {
             val isDarkTheme = themeMode.isDark(systemDark)
 
             ClanTheme(darkTheme = isDarkTheme) {
-                val backStack = rememberNavBackStack(SplashRoute as NavKey)
+                val navController = rememberNavHost(SplashRoute)
 
                 NavDisplay(
-                    backStack = backStack,
+                    backStack = navController.backStack,
                     entryProvider = { key ->
                         when (key) {
                             is SplashRoute -> NavEntry(
@@ -51,7 +52,7 @@ class SplashActivity : ComponentActivity() {
                                     SplashScreen(
                                         isDarkTheme = themeMode.isDark(systemDark),
                                         onToggleTheme = { themeViewModel.toggleTheme(systemDark) },
-                                        onGetStarted = {  backStack[backStack.lastIndex] = AuthRoute as NavKey }
+                                        onGetStarted = { navController.replace(AuthRoute) }
                                     )
                                 }
                             )
