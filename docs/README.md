@@ -14,7 +14,10 @@ Welcome to the official developer and AI agent documentation for the **Clan (Cla
 
 ### 🏛️ 2. Architecture & Patterns
 - **[`docs/architecture/CLEAN_ARCHITECTURE.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/CLEAN_ARCHITECTURE.md)**: Clean Architecture layer breakdown (`common`, `domain`, `data`, `presentation`), UDF, state flow.
-- **[`docs/architecture/DATASTORE_PERSISTENCE.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/DATASTORE_PERSISTENCE.md)**: Preferences DataStore implementation, repository pattern, and use cases.
+- **[`docs/architecture/DATASTORE_PERSISTENCE.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/DATASTORE_PERSISTENCE.md)**: Preferences DataStore implementation, generic utilities, repository pattern, and use cases.
+- **[`docs/architecture/DEPENDENCY_INJECTION.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/DEPENDENCY_INJECTION.md)**: Dagger Hilt DI setup, module hierarchy, annotation reference, and adding new features.
+- **[`docs/architecture/ASSET_MANAGEMENT.md`](file:///E:/Nodejs%20Projects/Clan/docs/architecture/ASSET_MANAGEMENT.md)**: `BaseAsset` interface contract, entity implementations, and asset registry.
+
 
 ---
 
@@ -27,11 +30,34 @@ Welcome to the official developer and AI agent documentation for the **Clan (Cla
 ---
 
 ### 🚀 4. Feature Specifications
-- **[`docs/features/SPLASH_ONBOARDING.md`](file:///E:/Nodejs%20Projects/Clan/docs/features/SPLASH_ONBOARDING.md)**: 3-page sliding onboarding pager with Canvas vector illustrations and live theme switcher.
+- **[`docs/features/SPLASH_ONBOARDING.md`](file:///E:/Nodejs%20Projects/Clan/docs/features/SPLASH_ONBOARDING.md)**: 3-page sliding onboarding pager splash screen, Village import Auth screen, and Jetpack Navigation 3 implementation.
 - **[`docs/features/THEME_MANAGEMENT.md`](file:///E:/Nodejs%20Projects/Clan/docs/features/THEME_MANAGEMENT.md)**: Live Day/Night theme toggling with disk persistence.
+- **[`docs/features/AUTHENTICATION.md`](file:///E:/Nodejs%20Projects/Clan/docs/features/AUTHENTICATION.md)**: Token-based auth persistence, CheckAuthStatus / AuthenticateUser / GetAuthToken use cases.
+
+### 🤖 5. AI Agents, Rules & Skills (`.agents/`)
+- **Rules**:
+  - [`GEMINI.md`](file:///E:/Nodejs%20Projects/Clan/GEMINI.md) & [`AGENTS.md`](file:///E:/Nodejs%20Projects/Clan/AGENTS.md): Workspace non-negotiable rules.
+  - [`.agents/rules/usecase-architecture.md`](file:///E:/Nodejs%20Projects/Clan/.agents/rules/usecase-architecture.md): BaseUseCase contract selection & domain rules.
+  - [`.agents/rules/clean-architecture.md`](file:///E:/Nodejs%20Projects/Clan/.agents/rules/clean-architecture.md): Layer boundaries & dependency rules.
+  - [`.agents/rules/design-system.md`](file:///E:/Nodejs%20Projects/Clan/.agents/rules/design-system.md): Zero hardcoding & ClanTheme styling rules.
+  - [`.agents/rules/documentation-parity.md`](file:///E:/Nodejs%20Projects/Clan/.agents/rules/documentation-parity.md): Mandatory architecture & design docs updates.
+  - [`.agents/rules/build-validation.md`](file:///E:/Nodejs%20Projects/Clan/.agents/rules/build-validation.md): Mandatory build verification.
+
+- **Specialized Subagents**:
+  - [`.agents/agents/usecase-architect.md`](file:///E:/Nodejs%20Projects/Clan/.agents/agents/usecase-architect.md): Domain UseCase & Model Architect.
+  - [`.agents/agents/clan-feature-builder.md`](file:///E:/Nodejs%20Projects/Clan/.agents/agents/clan-feature-builder.md): Full-Stack Feature Engineer.
+  - [`.agents/agents/compose-ui-specialist.md`](file:///E:/Nodejs%20Projects/Clan/.agents/agents/compose-ui-specialist.md): Compose & Design System Specialist.
+  - [`.agents/agents/build-verifier.md`](file:///E:/Nodejs%20Projects/Clan/.agents/agents/build-verifier.md): Build & Compilation Verifier.
+- **Skills**:
+  - [`.agents/skills/create-usecase/SKILL.md`](file:///E:/Nodejs%20Projects/Clan/.agents/skills/create-usecase/SKILL.md): UseCase authoring guide & contracts matrix.
+  - [`.agents/skills/clash-feature-architect/SKILL.md`](file:///E:/Nodejs%20Projects/Clan/.agents/skills/clash-feature-architect/SKILL.md): End-to-end Clash feature guide.
+  - [`.agents/skills/clan-design-system/SKILL.md`](file:///E:/Nodejs%20Projects/Clan/.agents/skills/clan-design-system/SKILL.md): Clash Compose UI & Canvas design guide.
+  - [`.agents/skills/validate-build/SKILL.md`](file:///E:/Nodejs%20Projects/Clan/.agents/skills/validate-build/SKILL.md): Gradle build verification & troubleshooting.
+  - [`.agents/skills/domain-test-generator/SKILL.md`](file:///E:/Nodejs%20Projects/Clan/.agents/skills/domain-test-generator/SKILL.md): Unit testing guide for UseCases.
 
 ---
 
 ## ⚡ Golden Rule for Any Agent Modifying Code
 > **Before declaring any task complete:**
 > Always execute `./gradlew assembleDebug` in the terminal and confirm an exit code of `0`.
+

@@ -10,6 +10,7 @@ This document defines the 4-layer architecture used throughout the Clan Android 
 app/src/main/java/com/devrachit/clan/
 │
 ├── common/             # Cross-cutting constants & helpers
+├── di/                 # Dagger Hilt modules (DataStore, Repository, UseCase providers)
 ├── domain/             # Business rules & entities (Zero Android dependencies)
 ├── data/               # Persistent storage, API clients, Repository implementations
 └── presentation/       # UI Composables, Theme, Custom Components, ViewModels
@@ -43,4 +44,6 @@ app/src/main/java/com/devrachit/clan/
 
 ## 4. `common/` Layer (Shared Helpers)
 - **`constants/`**: `AppStrings.kt` (Centralized strings), `Constants.kt` (Global system keys).
+- **`assets/`**: `BaseAsset` interface (`core/BaseAsset.kt`), entity implementations (`townhall/TownHall.kt`, `goldmine/GoldMine.kt`), registry (`Assets.kt`).
 - **`utils/`**: Time calculation, resource formatting helpers.
+

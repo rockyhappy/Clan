@@ -80,3 +80,14 @@ This document defines the **7 non-negotiable rules** that every AI coding agent 
 
 ## 🧪 7. BUILD VALIDATION BEFORE TASK COMPLETION
 - **Rule**: Any agent modifying Kotlin code or Gradle files **MUST** run `./gradlew assembleDebug` and verify exit code `0` before reporting completion to the user.
+
+---
+
+## 📝 8. COMPULSORY ARCHITECTURE & DESIGN DOCUMENTATION UPDATES (Mandatory)
+- **Rule**: After writing or modifying ANY feature, domain model, usecase, repository, or UI component, you **MUST** update the corresponding architecture, design, and feature documentation in [`docs/`](file:///E:/Nodejs%20Projects/Clan/docs).
+- **Required Documentation Actions**:
+  - **New Features**: Create a specification document in `docs/features/<FEATURE_NAME>.md` and register it in `docs/README.md`.
+  - **Architecture Changes**: Update `docs/architecture/CLEAN_ARCHITECTURE.md` or `docs/architecture/DATASTORE_PERSISTENCE.md` with new data flows, models, and layer contracts.
+  - **Design System / UI Changes**: Update `docs/design_system/COMPONENTS.md`, `COLOR_SYSTEM.md`, `DESIGN_TOKENS.md`, or `TYPOGRAPHY_GUIDE.md` when introducing new components, variants, or tokens.
+- **Rule Enforcement**: Code changes without matching documentation updates in `docs/` are strictly non-compliant and considered incomplete.
+
