@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Clan">
         <activity
-            android:name=".presentation.screens.splash.MainActivity"
+            android:name=".presentation.screens.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Clan">
             <intent-filter>

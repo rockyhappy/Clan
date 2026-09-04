@@ -2,9 +2,25 @@ package com.devrachit.clan.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.rememberNavBackStack
+
+/**
+ * CompositionLocal key for the app-wide [NavController].
+ *
+ * Provided near the root of the composition (typically inside
+ * `CompositionLocalProvider(LocalNavHost provides navController)`)
+ * and consumed anywhere via `LocalNavHost.current`.
+ *
+ * Uses [staticCompositionLocalOf] because the NavController instance
+ * is created once and never replaced during the lifetime of the
+ * composition — only its internal back-stack mutates.
+ */
+val LocalNavHost = staticCompositionLocalOf<NavController> {
+    error("NavController not provided. Wrap your composable tree with CompositionLocalProvider(LocalNavHost provides navController).")
+}
 
 /**
  * A modern, state-driven implementation of a NavController for Jetpack Navigation 3.

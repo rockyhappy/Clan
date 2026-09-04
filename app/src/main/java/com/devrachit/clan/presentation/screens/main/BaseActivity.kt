@@ -50,7 +50,7 @@ import com.devrachit.clan.presentation.components.text.ClanResourceText
 import com.devrachit.clan.presentation.components.text.ClanTitleText
 import com.devrachit.clan.presentation.components.text.ClanWarBannerText
 import com.devrachit.clan.presentation.theme.ClanTheme
-import com.devrachit.clan.presentation.screens.viewmodels.ThemeViewModel
+import com.devrachit.clan.presentation.viewmodels.ThemeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -66,7 +66,6 @@ class BaseActivity : ComponentActivity() {
 
             ClanTheme(darkTheme = isDarkTheme) {
                 ClanDashboardScreen(
-                    isDarkTheme = isDarkTheme,
                     onToggleTheme = { themeViewModel.toggleTheme(systemDark) }
                 )
             }
@@ -77,9 +76,9 @@ class BaseActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClanDashboardScreen(
-    isDarkTheme: Boolean = false,
     onToggleTheme: () -> Unit = {}
 ) {
+    val isDarkTheme = ClanTheme.isDarkTheme
     Scaffold(
         topBar = {
             TopAppBar(

@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
@@ -48,6 +49,14 @@ import androidx.core.view.WindowCompat
  * }
  * ```
  */
+/**
+ * CompositionLocal key tracking whether the active theme is dark (Night Base)
+ * or light (Day Village).
+ *
+ * Provided automatically by [ClanTheme] — consumed via `ClanTheme.isDarkTheme`.
+ */
+val LocalDarkTheme = staticCompositionLocalOf { false }
+
 @Composable
 fun ClanTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -78,6 +87,7 @@ fun ClanTheme(
     }
 
     CompositionLocalProvider(
+        LocalDarkTheme provides darkTheme,
         LocalClanResourceColors provides resourceColors,
         LocalClanSurfaceColors provides surfaceColors,
         LocalClanGradients provides gradients,
@@ -103,6 +113,20 @@ fun ClanTheme(
  * Direct access to all design system properties without boilerplate.
  */
 object ClanTheme {
+    /**
+     * Whether the current composition is using the dark (Night Base) theme.
+     *
+     * Use this anywhere instead of threading `isDarkTheme: Boolean` parameters:
+     * ```kotlin
+     * val label = if (ClanTheme.isDarkTheme) AppStrings.Theme.NIGHT_BASE
+     *             else AppStrings.Theme.DAY_VILLAGE
+     * ```
+     */
+    val isDarkTheme: Boolean
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalDarkTheme.current
+
     /**
      * Standard Material 3 color scheme tokens.
      */

@@ -48,11 +48,11 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun SplashScreen(
-    isDarkTheme: Boolean = false,
     onToggleTheme: () -> Unit = {},
-    onGetStarted: () -> Unit = {},
+    onNavigateToAuth: () -> Unit = {},
     onNavigateToMain: () -> Unit = {}
 ) {
+    val isDarkTheme = ClanTheme.isDarkTheme
     val gold = ClanTheme.resources.gold
     val elixir = ClanTheme.resources.elixir
     val gems = ClanTheme.resources.gems
@@ -123,7 +123,7 @@ fun SplashScreen(
                 }
 
                 // Skip Button
-                TextButton(onClick = onGetStarted) {
+                TextButton(onClick = onNavigateToAuth) {
                     ClanLabelText(
                         text = AppStrings.Common.SKIP,
                         color = ClanTheme.colors.onSurfaceVariant,
@@ -189,7 +189,7 @@ fun SplashScreen(
                                 pagerState.animateScrollToPage(pagerState.currentPage + 1)
                             }
                         } else {
-                            onGetStarted()
+                            onNavigateToAuth()
                         }
                     },
                     variant = ClanButtonVariant.Primary

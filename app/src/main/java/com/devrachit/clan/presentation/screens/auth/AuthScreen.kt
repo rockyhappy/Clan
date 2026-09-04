@@ -39,10 +39,10 @@ import com.devrachit.clan.presentation.theme.ClanTheme
 
 @Composable
 fun AuthScreen(
-    isDarkTheme: Boolean = false,
     onToggleTheme: () -> Unit = {},
     onImport: () -> Unit
 ) {
+    val isDarkTheme = ClanTheme.isDarkTheme
     var jsonText by remember { mutableStateOf("") }
     var showHowTo by remember { mutableStateOf(false) }
 

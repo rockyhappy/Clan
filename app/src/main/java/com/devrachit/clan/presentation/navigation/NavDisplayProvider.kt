@@ -8,22 +8,19 @@ import androidx.navigation3.ui.NavDisplay
 import com.devrachit.clan.presentation.screens.auth.AuthScreen
 import com.devrachit.clan.presentation.screens.main.ClanDashboardScreen
 import com.devrachit.clan.presentation.screens.splash.SplashScreen
-import com.devrachit.clan.domain.model.ThemeMode
 
 /**
  * Provides the [NavDisplay] wiring for the splash-flow Activity.
  *
- * All Activity-scoped values (theme state, navigation controller, Activity
- * callbacks) are passed in as parameters so this composable stays
- * framework-agnostic and testable.
+ * Theme state is read from [ClanTheme.isDarkTheme] via CompositionLocal —
+ * no need to thread `isDarkTheme` parameters through here.
  */
 @Composable
 fun ClanNavDisplay(
     backStack: NavBackStack<NavKey>,
-    isDarkTheme: Boolean,
     onToggleTheme: () -> Unit,
-    onNavigateToMain: () -> Unit ={},
-    onNavigateToAuth: () -> Unit ={},
+    onNavigateToMain: () -> Unit = {},
+    onNavigateToAuth: () -> Unit = {},
 ) {
     NavDisplay(
         backStack = backStack,
@@ -33,9 +30,8 @@ fun ClanNavDisplay(
                     key = key,
                     content = {
                         SplashScreen(
-                            isDarkTheme = isDarkTheme,
                             onToggleTheme = onToggleTheme,
-                            onGetStarted = onNavigateToAuth,
+                            onNavigateToAuth = onNavigateToAuth,
                             onNavigateToMain = onNavigateToMain
                         )
                     }
@@ -44,7 +40,6 @@ fun ClanNavDisplay(
                     key = key,
                     content = {
                         AuthScreen(
-                            isDarkTheme = isDarkTheme,
                             onToggleTheme = onToggleTheme,
                             onImport = onNavigateToMain
                         )
@@ -54,7 +49,6 @@ fun ClanNavDisplay(
                     key = key,
                     content = {
                         ClanDashboardScreen(
-                            isDarkTheme = isDarkTheme,
                             onToggleTheme = onToggleTheme
                         )
                     }
@@ -63,7 +57,6 @@ fun ClanNavDisplay(
                     key = key,
                     content = {
                         ClanDashboardScreen(
-                            isDarkTheme = isDarkTheme,
                             onToggleTheme = onToggleTheme
                         )
                     }
