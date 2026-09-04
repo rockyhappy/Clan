@@ -44,7 +44,10 @@ object AppStrings {
         const val HERO_SUBTITLE = "Clash Helper & Tracker"
         const val HERO_DESC = "Track upgrades, plan attacks, and dominate your Clan Wars."
         const val ENTER_CTA = "GET STARTED"
-        
+        const val CHECKING_TITLE = "Returning to Village..."
+        const val CHECKING_SUBTITLE = "VERIFYING CHIEF"
+        const val CHECKING_DESC = "Checking your village data and preparing your dashboard."
+
         // Keep existing for backward compatibility
         const val PAGE_1_TITLE = "Clash Helper & Tracker"
         const val PAGE_1_SUBTITLE = "BUILD & UPGRADE"
