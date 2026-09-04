@@ -50,11 +50,11 @@ import com.devrachit.clan.presentation.components.text.ClanResourceText
 import com.devrachit.clan.presentation.components.text.ClanTitleText
 import com.devrachit.clan.presentation.components.text.ClanWarBannerText
 import com.devrachit.clan.presentation.theme.ClanTheme
-import com.devrachit.clan.presentation.theme.ThemeViewModel
+import com.devrachit.clan.presentation.screens.viewmodels.ThemeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class BaseActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

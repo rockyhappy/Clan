@@ -9,3 +9,5 @@ data object SplashRoute : NavKey
 @Serializable
 data object AuthRoute : NavKey
 
+@Serializable
+data object MainRoute : NavKey

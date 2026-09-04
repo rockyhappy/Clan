@@ -1,4 +1,4 @@
-package com.devrachit.clan.presentation.theme
+package com.devrachit.clan.presentation.screens.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

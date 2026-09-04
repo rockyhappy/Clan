@@ -16,3 +16,9 @@ fun rememberNavHost(initialRoute: NavKey): NavController {
         NavController(backStack)
     }
 }
+
+@Composable
+fun NewNavHost(initialRoute: NavKey){
+    val backStack = rememberNavBackStack(initialRoute)
+    NavController(backStack)
+}

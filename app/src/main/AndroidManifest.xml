@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Clan">
         <activity
-            android:name=".presentation.screens.splash.SplashActivity"
+            android:name=".presentation.screens.splash.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Clan">
             <intent-filter>
@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".presentation.screens.main.MainActivity"
+            android:name=".presentation.screens.main.BaseActivity"
             android:exported="false"
             android:theme="@style/Theme.Clan" />
     </application>

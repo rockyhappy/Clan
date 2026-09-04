@@ -50,7 +50,8 @@ import kotlinx.coroutines.launch
 fun SplashScreen(
     isDarkTheme: Boolean = false,
     onToggleTheme: () -> Unit = {},
-    onGetStarted: () -> Unit
+    onGetStarted: () -> Unit = {},
+    onNavigateToMain: () -> Unit = {}
 ) {
     val gold = ClanTheme.resources.gold
     val elixir = ClanTheme.resources.elixir
