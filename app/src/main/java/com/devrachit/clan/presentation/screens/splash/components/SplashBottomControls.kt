@@ -54,3 +54,16 @@ internal fun SplashBottomControls(
         )
     }
 }
+
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun SplashBottomControlsPreview() {
+    ClanTheme {
+        SplashBottomControls(
+            pagerState = androidx.compose.foundation.pager.rememberPagerState(pageCount = { 3 }),
+            pageCount = 3,
+            onNextPage = {},
+            onGetStarted = {}
+        )
+    }
+}

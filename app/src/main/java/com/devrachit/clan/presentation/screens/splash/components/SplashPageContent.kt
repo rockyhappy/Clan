@@ -96,3 +96,19 @@ internal fun SplashPageContent(page: SplashPage) {
         )
     }
 }
+
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun SplashPageContentPreview() {
+    ClanTheme {
+        SplashPageContent(
+            page = SplashPage(
+                title = "Clash Helper & Tracker",
+                subtitle = "BUILD & UPGRADE",
+                description = "Track upgrades, analyze army compositions, manage builder queues, and never lose track of a village upgrade.",
+                badgeColor = ClanTheme.resources.gold,
+                iconUrl = com.devrachit.clan.common.assets.Assets.TownHall[14]
+            )
+        )
+    }
+}

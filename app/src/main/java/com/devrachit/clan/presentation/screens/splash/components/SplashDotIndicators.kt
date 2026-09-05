@@ -53,3 +53,11 @@ internal fun SplashDotIndicators(
         }
     }
 }
+
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun SplashDotIndicatorsPreview() {
+    ClanTheme {
+        SplashDotIndicators(currentPage = 1, pageCount = 3)
+    }
+}

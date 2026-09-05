@@ -50,3 +50,11 @@ internal fun SplashThemeToggle(
         }
     }
 }
+
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun SplashThemeTogglePreview() {
+    ClanTheme {
+        SplashThemeToggle(onToggleTheme = {})
+    }
+}

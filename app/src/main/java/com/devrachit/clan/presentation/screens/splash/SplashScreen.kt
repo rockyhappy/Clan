@@ -35,7 +35,28 @@ fun SplashScreen(
 ) {
     val splashViewModel: SplashViewModel = hiltViewModel()
     val uiState by splashViewModel.splashUiState.collectAsStateWithLifecycle()
+    
+    // Auto-redirect when authenticated
+    if (uiState is SplashUiState.Authenticated) {
+        LaunchedEffect(Unit) {
+            delay(1500L)
+            onNavigateToMain()
+        }
+    }
 
+    SplashScreenContent(
+        uiState = uiState,
+        onToggleTheme = onToggleTheme,
+        onNavigateToAuth = onNavigateToAuth
+    )
+}
+
+@Composable
+internal fun SplashScreenContent(
+    uiState: SplashUiState,
+    onToggleTheme: () -> Unit,
+    onNavigateToAuth: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -50,16 +71,7 @@ fun SplashScreen(
                 SplashCheckingContent(
                     onToggleTheme = onToggleTheme
                 )
-
-                // Auto-redirect when authenticated
-                if (uiState is SplashUiState.Authenticated) {
-                    LaunchedEffect(Unit) {
-                        delay(1500L)
-                        onNavigateToMain()
-                    }
-                }
             }
-
             is SplashUiState.Onboarding -> {
                 SplashOnboardingContent(
                     onToggleTheme = onToggleTheme,
@@ -70,3 +82,26 @@ fun SplashScreen(
     }
 }
 
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun SplashScreenCheckingPreview() {
+    ClanTheme(darkTheme = false) {
+        SplashScreenContent(
+            uiState = SplashUiState.Loading,
+            onToggleTheme = {},
+            onNavigateToAuth = {}
+        )
+    }
+}
+
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun SplashScreenOnboardingPreview() {
+    ClanTheme(darkTheme = true) {
+        SplashScreenContent(
+            uiState = SplashUiState.Onboarding,
+            onToggleTheme = {},
+            onNavigateToAuth = {}
+        )
+    }
+}

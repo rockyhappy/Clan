@@ -144,3 +144,11 @@ internal fun SplashCheckingContent(
         Spacer(modifier = Modifier.weight(1f))
     }
 }
+
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun SplashCheckingContentPreview() {
+    ClanTheme(darkTheme = true) {
+        SplashCheckingContent(onToggleTheme = {})
+    }
+}

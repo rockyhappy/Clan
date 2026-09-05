@@ -88,3 +88,14 @@ internal fun SplashOnboardingContent(
         )
     }
 }
+
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun SplashOnboardingContentPreview() {
+    ClanTheme(darkTheme = false) {
+        SplashOnboardingContent(
+            onToggleTheme = {},
+            onNavigateToAuth = {}
+        )
+    }
+}

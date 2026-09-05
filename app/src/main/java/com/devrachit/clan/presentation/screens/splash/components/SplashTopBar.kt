@@ -42,3 +42,11 @@ internal fun SplashTopBar(
         }
     }
 }
+
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun SplashTopBarPreview() {
+    ClanTheme {
+        SplashTopBar(onToggleTheme = {}, onSkip = {})
+    }
+}
