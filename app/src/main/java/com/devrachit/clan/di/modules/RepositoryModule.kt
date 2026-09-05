@@ -33,4 +33,10 @@ abstract class RepositoryModule {
     abstract fun bindAuthRepository(
         authRepositoryImpl: AuthRepositoryImpl
     ): AuthRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindVillageRepository(
+        villageRepositoryImpl: com.devrachit.clan.data.repository.VillageRepositoryImpl
+    ): com.devrachit.clan.domain.repository.VillageRepository
 }
