@@ -76,6 +76,17 @@ object AppStrings {
         const val HOW_TO_STEP_5 = "5. Paste it in the field above"
         const val IMPORT_CTA = "IMPORT VILLAGE"
         const val SCREENSHOTS_COMING_SOON = "Detailed screenshots will be added soon."
+        const val ERROR_EMPTY_JSON = "Please paste your village JSON."
+        const val ERROR_INVALID_JSON = "Invalid village JSON. Could not find player tag."
+        const val JSON_TAG_KEY = "tag"
+    }
+
+    object Storage {
+        const val VILLAGE_FILE_NAME = "village_data.json"
+        const val AUTH_PREFS = "auth_prefs"
+        const val KEY_AUTH_TOKEN = "key_auth_token"
+        const val THEME_PREFS = "clan_theme_prefs"
+        const val KEY_THEME_MODE = "key_theme_mode"
     }
 
     object Dashboard {

@@ -17,8 +17,8 @@ import kotlinx.coroutines.flow.Flow
 class AuthDataStore(private val context: Context) {
 
     companion object {
-        private val Context.authDataStore by preferencesDataStore("auth_prefs")
-        private val KEY_AUTH_TOKEN = stringPreferencesKey("key_auth_token")
+        private val Context.authDataStore by preferencesDataStore(com.devrachit.clan.common.constants.AppStrings.Storage.AUTH_PREFS)
+        private val KEY_AUTH_TOKEN = stringPreferencesKey(com.devrachit.clan.common.constants.AppStrings.Storage.KEY_AUTH_TOKEN)
     }
 
     val authTagStore: Flow<String> = context.authDataStore.safeValueFlow(

@@ -2,6 +2,7 @@ package com.devrachit.clan.presentation.screens.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.devrachit.clan.common.constants.AppStrings
 import com.devrachit.clan.domain.usecase.auth.ImportVillageUseCase
 import com.devrachit.clan.presentation.screens.auth.states.AuthUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +22,7 @@ class AuthViewModel @Inject constructor(
 
     fun importVillage(jsonString: String) {
         if (jsonString.isBlank()) {
-            _uiState.value = AuthUiState.Error("Please paste your village JSON.")
+            _uiState.value = AuthUiState.Error(AppStrings.Auth.ERROR_EMPTY_JSON)
             return
         }
 
@@ -32,7 +33,7 @@ class AuthViewModel @Inject constructor(
             if (success) {
                 _uiState.value = AuthUiState.Success
             } else {
-                _uiState.value = AuthUiState.Error("Invalid village JSON. Could not find player tag.")
+                _uiState.value = AuthUiState.Error(AppStrings.Auth.ERROR_INVALID_JSON)
             }
         }
     }

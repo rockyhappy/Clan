@@ -20,8 +20,8 @@ import kotlinx.coroutines.flow.Flow
 class ThemeDataStore(private val context: Context) {
 
     companion object {
-        private val Context.themeDataStore: DataStore<Preferences> by preferencesDataStore(name = "clan_theme_prefs")
-        private val KEY_THEME_MODE = stringPreferencesKey("key_theme_mode")
+        private val Context.themeDataStore: DataStore<Preferences> by preferencesDataStore(name = com.devrachit.clan.common.constants.AppStrings.Storage.THEME_PREFS)
+        private val KEY_THEME_MODE = stringPreferencesKey(com.devrachit.clan.common.constants.AppStrings.Storage.KEY_THEME_MODE)
     }
 
     val themeModeFlow: Flow<ThemeMode> = context.themeDataStore.safeMappedFlow(

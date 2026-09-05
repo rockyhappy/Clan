@@ -3,6 +3,7 @@ package com.devrachit.clan.domain.usecase.auth
 import com.devrachit.clan.domain.repository.AuthRepository
 import com.devrachit.clan.domain.repository.VillageRepository
 import com.devrachit.clan.domain.usecase.core.BaseSuspendUseCase
+import com.devrachit.clan.common.constants.AppStrings
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -20,7 +21,7 @@ class ImportVillageUseCase(
         
         return try {
             val jsonObject = JSONObject(params)
-            val tag = jsonObject.optString("tag")
+            val tag = jsonObject.optString(AppStrings.Auth.JSON_TAG_KEY)
             if (tag.isNotEmpty()) {
                 // Save the tag as the auth token
                 authRepository.setAuthToken(tag)

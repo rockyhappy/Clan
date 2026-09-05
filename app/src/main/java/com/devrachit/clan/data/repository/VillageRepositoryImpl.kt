@@ -8,6 +8,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
+import com.devrachit.clan.common.constants.AppStrings
 
 /**
  * Implementation of [VillageRepository] that saves the JSON string to internal storage.
@@ -17,7 +18,7 @@ class VillageRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context
 ) : VillageRepository {
 
-    private val fileName = "village_data.json"
+    private val fileName = AppStrings.Storage.VILLAGE_FILE_NAME
 
     override suspend fun saveVillageJson(json: String) {
         withContext(Dispatchers.IO) {
