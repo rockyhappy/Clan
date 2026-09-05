@@ -15,7 +15,6 @@ import com.devrachit.clan.presentation.navigation.LocalNavHost
 import com.devrachit.clan.presentation.navigation.MainRoute
 import com.devrachit.clan.presentation.navigation.SplashRoute
 import com.devrachit.clan.presentation.navigation.rememberNavHost
-import com.devrachit.clan.presentation.screens.splash.SplashViewModel
 import com.devrachit.clan.presentation.viewmodels.ThemeViewModel
 import com.devrachit.clan.presentation.theme.ClanTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,11 +26,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val themeViewModel: ThemeViewModel = hiltViewModel()
-            val splashViewModel: SplashViewModel = hiltViewModel()
             val themeMode by themeViewModel.themeMode.collectAsStateWithLifecycle()
-            val isAuthenticated by splashViewModel.isAuthenticated.collectAsStateWithLifecycle()
             val systemDark = isSystemInDarkTheme()
-            val isDarkTheme = themeMode.isDark(isSystemInDarkTheme())
+            val isDarkTheme = themeMode.isDark(systemDark)
 
             ClanTheme(darkTheme = isDarkTheme) {
                 val navController = rememberNavHost(initialRoute = SplashRoute)

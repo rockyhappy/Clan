@@ -53,4 +53,11 @@ object UseCaseModule {
     fun provideGetAuthTokenUseCase(
         authRepository: AuthRepository
     ): GetAuthTokenUseCase = GetAuthTokenUseCase(authRepository)
+
+    @Provides
+    fun provideImportVillageUseCase(
+        authRepository: AuthRepository,
+        villageRepository: com.devrachit.clan.domain.repository.VillageRepository
+    ): com.devrachit.clan.domain.usecase.auth.ImportVillageUseCase =
+        com.devrachit.clan.domain.usecase.auth.ImportVillageUseCase(authRepository, villageRepository)
 }
