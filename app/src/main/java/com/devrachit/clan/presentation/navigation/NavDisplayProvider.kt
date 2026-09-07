@@ -49,7 +49,7 @@ fun ClanNavDisplay(
                 is MainRoute -> NavEntry(
                     key = key,
                     content = {
-                        ClanDashboardScreen(
+                        com.devrachit.clan.presentation.screens.main.ClanDashboardWrapper(
                             onToggleTheme = onToggleTheme,
                             onLogout = onNavigateToSplash
                         )
@@ -58,7 +58,7 @@ fun ClanNavDisplay(
                 else -> NavEntry(
                     key = key,
                     content = {
-                        ClanDashboardScreen(
+                        com.devrachit.clan.presentation.screens.main.ClanDashboardWrapper(
                             onToggleTheme = onToggleTheme,
                             onLogout = onNavigateToSplash
                         )

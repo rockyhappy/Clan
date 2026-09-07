@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -77,43 +78,37 @@ class BaseActivity : ComponentActivity() {
 @Composable
 fun ClanDashboardScreen(
     onToggleTheme: () -> Unit = {},
-    onLogout: () -> Unit = {}
+    onLogout: () -> Unit = {},
+    onMenuClick: () -> Unit = {}
 ) {
-    val viewModel: DashboardViewModel = hiltViewModel()
-    val isLoggedOut by viewModel.isLoggedOut.collectAsState()
     val isDarkTheme = ClanTheme.isDarkTheme
-
-    // Navigate back to splash once logout completes
-    if (isLoggedOut) {
-        androidx.compose.runtime.LaunchedEffect(Unit) {
-            onLogout()
-        }
-    }
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(
+                            modifier = Modifier
+                                .size(36.dp)
+                                .clip(ClanTheme.gameShapes.resourcePill)
+                                .background(ClanTheme.colors.surfaceContainerHigh)
+                                .clickable { onMenuClick() },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            ClanDisplayText(
+                                text = "☰",
+                                color = ClanTheme.colors.onSurface,
+                                fontSize = 16.sp
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(ClanTheme.spacing.small))
                         ClanDisplayText(
                             text = AppStrings.App.TITLE,
                             fontSize = 22.sp,
                             color = ClanTheme.colors.primary,
                             letterSpacing = 1.sp
                         )
-                        Spacer(modifier = Modifier.width(ClanTheme.spacing.small))
-                        Box(
-                            modifier = Modifier
-                                .clip(ClanTheme.gameShapes.townHallBadge)
-                                .background(ClanTheme.resources.gold)
-                                .padding(horizontal = 8.dp, vertical = 2.dp)
-                        ) {
-                            ClanDisplayText(
-                                text = AppStrings.App.DEFAULT_TH_LEVEL,
-                                fontSize = 12.sp,
-                                color = Color(0xFF23140B)
-                            )
-                        }
                     }
                 },
                 actions = {
@@ -180,7 +175,7 @@ fun ClanDashboardScreen(
                 Spacer(modifier = Modifier.height(ClanTheme.spacing.small))
                 ClanButton(
                     text = AppStrings.Common.LOGOUT,
-                    onClick = { viewModel.logout() },
+                    onClick = onLogout,
                     variant = ClanButtonVariant.Danger
                 )
             }

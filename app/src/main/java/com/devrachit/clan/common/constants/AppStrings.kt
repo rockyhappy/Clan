@@ -33,6 +33,11 @@ object AppStrings {
         const val BOOSTED = "BOOSTED"
         const val LOADING = "Loading..."
         const val LOGOUT = "Logout"
+        const val VILLAGE = "Village"
+        const val WARS = "Wars"
+        const val LAB = "Lab"
+        const val SETTINGS = "Settings"
+        const val PROFILE = "Chief Profile"
     }
 
     object Theme {
