@@ -38,7 +38,8 @@ class MainActivity : ComponentActivity() {
                         backStack = LocalNavHost.current.backStack,
                         onToggleTheme = { themeViewModel.toggleTheme(systemDark) },
                         onNavigateToMain = { navController.replace(route = MainRoute) },
-                        onNavigateToAuth = { navController.replace(route = AuthRoute) }
+                        onNavigateToAuth = { navController.replace(route = AuthRoute) },
+                        onNavigateToSplash = { navController.clearBackStack(route = SplashRoute) }
                     )
                 }
             }

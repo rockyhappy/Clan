@@ -21,6 +21,7 @@ fun ClanNavDisplay(
     onToggleTheme: () -> Unit,
     onNavigateToMain: () -> Unit = {},
     onNavigateToAuth: () -> Unit = {},
+    onNavigateToSplash: () -> Unit = {},
 ) {
     NavDisplay(
         backStack = backStack,
@@ -49,7 +50,8 @@ fun ClanNavDisplay(
                     key = key,
                     content = {
                         ClanDashboardScreen(
-                            onToggleTheme = onToggleTheme
+                            onToggleTheme = onToggleTheme,
+                            onLogout = onNavigateToSplash
                         )
                     }
                 )
@@ -57,7 +59,8 @@ fun ClanNavDisplay(
                     key = key,
                     content = {
                         ClanDashboardScreen(
-                            onToggleTheme = onToggleTheme
+                            onToggleTheme = onToggleTheme,
+                            onLogout = onNavigateToSplash
                         )
                     }
                 )

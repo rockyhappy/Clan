@@ -76,9 +76,20 @@ class BaseActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClanDashboardScreen(
-    onToggleTheme: () -> Unit = {}
+    onToggleTheme: () -> Unit = {},
+    onLogout: () -> Unit = {}
 ) {
+    val viewModel: DashboardViewModel = hiltViewModel()
+    val isLoggedOut by viewModel.isLoggedOut.collectAsState()
     val isDarkTheme = ClanTheme.isDarkTheme
+
+    // Navigate back to splash once logout completes
+    if (isLoggedOut) {
+        androidx.compose.runtime.LaunchedEffect(Unit) {
+            onLogout()
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -162,6 +173,16 @@ fun ClanDashboardScreen(
             // 4. Common Action Buttons Showcase
             item {
                 ActionButtonsShowcase()
+            }
+
+            // 5. Logout Button
+            item {
+                Spacer(modifier = Modifier.height(ClanTheme.spacing.small))
+                ClanButton(
+                    text = AppStrings.Common.LOGOUT,
+                    onClick = { viewModel.logout() },
+                    variant = ClanButtonVariant.Danger
+                )
             }
 
             item { Spacer(modifier = Modifier.height(ClanTheme.spacing.large)) }

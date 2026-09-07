@@ -32,6 +32,7 @@ object AppStrings {
         const val READY = "READY"
         const val BOOSTED = "BOOSTED"
         const val LOADING = "Loading..."
+        const val LOGOUT = "Logout"
     }
 
     object Theme {
