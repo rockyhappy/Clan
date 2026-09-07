@@ -15,4 +15,14 @@ interface VillageRepository {
      * Returns null if no village data is found.
      */
     suspend fun getVillageJson(): String?
+
+    /**
+     * Clears the saved village JSON data.
+     */
+    suspend fun clearVillageJson()
+
+    /**
+     * Checks if the village JSON data is present.
+     */
+    suspend fun hasVillageJson(): Boolean
 }

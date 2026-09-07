@@ -41,8 +41,9 @@ object UseCaseModule {
 
     @Provides
     fun provideCheckAuthStatusUseCase(
-        authRepository: AuthRepository
-    ): CheckAuthStatusUseCase = CheckAuthStatusUseCase(authRepository)
+        authRepository: AuthRepository,
+        villageRepository: com.devrachit.clan.domain.repository.VillageRepository
+    ): CheckAuthStatusUseCase = CheckAuthStatusUseCase(authRepository, villageRepository)
 
     @Provides
     fun provideAuthenticateUserUseCase(
@@ -60,4 +61,11 @@ object UseCaseModule {
         villageRepository: com.devrachit.clan.domain.repository.VillageRepository
     ): com.devrachit.clan.domain.usecase.auth.ImportVillageUseCase =
         com.devrachit.clan.domain.usecase.auth.ImportVillageUseCase(authRepository, villageRepository)
+
+    @Provides
+    fun provideLogoutUseCase(
+        authRepository: AuthRepository,
+        villageRepository: com.devrachit.clan.domain.repository.VillageRepository
+    ): com.devrachit.clan.domain.usecase.auth.LogoutUseCase =
+        com.devrachit.clan.domain.usecase.auth.LogoutUseCase(authRepository, villageRepository)
 }

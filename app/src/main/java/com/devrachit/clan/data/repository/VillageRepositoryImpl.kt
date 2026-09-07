@@ -38,4 +38,19 @@ class VillageRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun clearVillageJson() {
+        withContext(Dispatchers.IO) {
+            val file = File(context.filesDir, fileName)
+            if (file.exists()) {
+                file.delete()
+            }
+        }
+    }
+
+    override suspend fun hasVillageJson(): Boolean {
+        return withContext(Dispatchers.IO) {
+            File(context.filesDir, fileName).exists()
+        }
+    }
 }
