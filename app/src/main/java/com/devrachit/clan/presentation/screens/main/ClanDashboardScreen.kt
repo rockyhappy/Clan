@@ -51,29 +51,6 @@ import com.devrachit.clan.presentation.components.text.ClanResourceText
 import com.devrachit.clan.presentation.components.text.ClanTitleText
 import com.devrachit.clan.presentation.components.text.ClanWarBannerText
 import com.devrachit.clan.presentation.theme.ClanTheme
-import com.devrachit.clan.presentation.viewmodels.ThemeViewModel
-import dagger.hilt.android.AndroidEntryPoint
-
-@AndroidEntryPoint
-class BaseActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            val themeViewModel: ThemeViewModel = hiltViewModel()
-            val themeMode by themeViewModel.themeMode.collectAsState()
-            val systemDark = isSystemInDarkTheme()
-            val isDarkTheme = themeMode.isDark(systemDark)
-
-            ClanTheme(darkTheme = isDarkTheme) {
-                ClanDashboardScreen(
-                    onToggleTheme = { themeViewModel.toggleTheme(systemDark) }
-                )
-            }
-        }
-    }
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClanDashboardScreen(

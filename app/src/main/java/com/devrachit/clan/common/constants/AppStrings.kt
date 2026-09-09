@@ -38,6 +38,8 @@ object AppStrings {
         const val LAB = "Lab"
         const val SETTINGS = "Settings"
         const val PROFILE = "Chief Profile"
+        const val CHIEF = "Chief"
+        const val CLOSE = "✕"
     }
 
     object Theme {

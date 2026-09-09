@@ -60,7 +60,7 @@ fun ClanDrawer(
             contentAlignment = Alignment.Center
         ) {
             ClanDisplayText(
-                text = "X",
+                text = com.devrachit.clan.common.constants.AppStrings.Common.CLOSE,
                 color = ClanTheme.colors.onSurface,
                 fontSize = 20.sp
             )

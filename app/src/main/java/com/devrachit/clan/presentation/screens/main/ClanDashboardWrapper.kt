@@ -37,7 +37,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 fun ClanDashboardWrapper(
-    username: String = "Chief",
+    username: String = com.devrachit.clan.common.constants.AppStrings.Common.CHIEF,
     onToggleTheme: () -> Unit = {},
     onLogout: () -> Unit = {}
 ) {
