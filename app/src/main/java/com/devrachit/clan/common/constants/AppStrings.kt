@@ -32,6 +32,14 @@ object AppStrings {
         const val READY = "READY"
         const val BOOSTED = "BOOSTED"
         const val LOADING = "Loading..."
+        const val LOGOUT = "Logout"
+        const val VILLAGE = "Village"
+        const val WARS = "Wars"
+        const val LAB = "Lab"
+        const val SETTINGS = "Settings"
+        const val PROFILE = "Chief Profile"
+        const val CHIEF = "Chief"
+        const val CLOSE = "✕"
     }
 
     object Theme {
@@ -44,7 +52,10 @@ object AppStrings {
         const val HERO_SUBTITLE = "Clash Helper & Tracker"
         const val HERO_DESC = "Track upgrades, plan attacks, and dominate your Clan Wars."
         const val ENTER_CTA = "GET STARTED"
-        
+        const val CHECKING_TITLE = "Returning to Village..."
+        const val CHECKING_SUBTITLE = "VERIFYING CHIEF"
+        const val CHECKING_DESC = "Checking your village data and preparing your dashboard."
+
         // Keep existing for backward compatibility
         const val PAGE_1_TITLE = "Clash Helper & Tracker"
         const val PAGE_1_SUBTITLE = "BUILD & UPGRADE"
@@ -73,6 +84,17 @@ object AppStrings {
         const val HOW_TO_STEP_5 = "5. Paste it in the field above"
         const val IMPORT_CTA = "IMPORT VILLAGE"
         const val SCREENSHOTS_COMING_SOON = "Detailed screenshots will be added soon."
+        const val ERROR_EMPTY_JSON = "Please paste your village JSON."
+        const val ERROR_INVALID_JSON = "Invalid village JSON. Could not find player tag."
+        const val JSON_TAG_KEY = "tag"
+    }
+
+    object Storage {
+        const val VILLAGE_FILE_NAME = "village_data.json"
+        const val AUTH_PREFS = "auth_prefs"
+        const val KEY_AUTH_TOKEN = "key_auth_token"
+        const val THEME_PREFS = "clan_theme_prefs"
+        const val KEY_THEME_MODE = "key_theme_mode"
     }
 
     object Dashboard {

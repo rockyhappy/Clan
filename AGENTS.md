@@ -7,8 +7,8 @@ This document defines the core architecture, non-negotiable rules, and developme
 ## 🎯 The 7 Non-Negotiable Rules
 
 1. **🚫 ZERO HARDCODED STRINGS**
-   - NEVER write raw string literals in UI composables (e.g. `Text("Upgrade")` is forbidden).
-   - ALL user-facing, subtitle, label, error, and system strings **MUST** be defined in [`AppStrings.kt`](file:///E:/Nodejs%20Projects/Clan/app/src/main/java/com/devrachit/clan/common/constants/AppStrings.kt) or `res/values/strings.xml`.
+   - NEVER write raw string literals anywhere in the codebase (including composables, ViewModels, UseCases, or Repositories).
+   - ALL user-facing, subtitle, label, error, filenames, JSON keys, and system strings **MUST** be defined in [`AppStrings.kt`](file:///E:/Nodejs%20Projects/Clan/app/src/main/java/com/devrachit/clan/common/constants/AppStrings.kt) or `res/values/strings.xml`.
 
 2. **🎨 ZERO HARDCODED COLORS OR DIMENSIONS**
    - NEVER write raw hex codes (`Color(0xFF...)`) or arbitrary pixel values in components.

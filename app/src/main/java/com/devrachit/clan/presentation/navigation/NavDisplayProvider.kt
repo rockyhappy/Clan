@@ -21,6 +21,7 @@ fun ClanNavDisplay(
     onToggleTheme: () -> Unit,
     onNavigateToMain: () -> Unit = {},
     onNavigateToAuth: () -> Unit = {},
+    onNavigateToSplash: () -> Unit = {},
 ) {
     NavDisplay(
         backStack = backStack,
@@ -48,16 +49,18 @@ fun ClanNavDisplay(
                 is MainRoute -> NavEntry(
                     key = key,
                     content = {
-                        ClanDashboardScreen(
-                            onToggleTheme = onToggleTheme
+                        com.devrachit.clan.presentation.screens.main.ClanDashboardWrapper(
+                            onToggleTheme = onToggleTheme,
+                            onLogout = onNavigateToSplash
                         )
                     }
                 )
                 else -> NavEntry(
                     key = key,
                     content = {
-                        ClanDashboardScreen(
-                            onToggleTheme = onToggleTheme
+                        com.devrachit.clan.presentation.screens.main.ClanDashboardWrapper(
+                            onToggleTheme = onToggleTheme,
+                            onLogout = onNavigateToSplash
                         )
                     }
                 )

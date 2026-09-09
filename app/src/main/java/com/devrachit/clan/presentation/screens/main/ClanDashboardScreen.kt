@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -50,59 +51,41 @@ import com.devrachit.clan.presentation.components.text.ClanResourceText
 import com.devrachit.clan.presentation.components.text.ClanTitleText
 import com.devrachit.clan.presentation.components.text.ClanWarBannerText
 import com.devrachit.clan.presentation.theme.ClanTheme
-import com.devrachit.clan.presentation.viewmodels.ThemeViewModel
-import dagger.hilt.android.AndroidEntryPoint
-
-@AndroidEntryPoint
-class BaseActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            val themeViewModel: ThemeViewModel = hiltViewModel()
-            val themeMode by themeViewModel.themeMode.collectAsState()
-            val systemDark = isSystemInDarkTheme()
-            val isDarkTheme = themeMode.isDark(systemDark)
-
-            ClanTheme(darkTheme = isDarkTheme) {
-                ClanDashboardScreen(
-                    onToggleTheme = { themeViewModel.toggleTheme(systemDark) }
-                )
-            }
-        }
-    }
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClanDashboardScreen(
-    onToggleTheme: () -> Unit = {}
+    onToggleTheme: () -> Unit = {},
+    onLogout: () -> Unit = {},
+    onMenuClick: () -> Unit = {}
 ) {
     val isDarkTheme = ClanTheme.isDarkTheme
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(
+                            modifier = Modifier
+                                .size(36.dp)
+                                .clip(ClanTheme.gameShapes.resourcePill)
+                                .background(ClanTheme.colors.surfaceContainerHigh)
+                                .clickable { onMenuClick() },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            ClanDisplayText(
+                                text = "☰",
+                                color = ClanTheme.colors.onSurface,
+                                fontSize = 16.sp
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(ClanTheme.spacing.small))
                         ClanDisplayText(
                             text = AppStrings.App.TITLE,
                             fontSize = 22.sp,
                             color = ClanTheme.colors.primary,
                             letterSpacing = 1.sp
                         )
-                        Spacer(modifier = Modifier.width(ClanTheme.spacing.small))
-                        Box(
-                            modifier = Modifier
-                                .clip(ClanTheme.gameShapes.townHallBadge)
-                                .background(ClanTheme.resources.gold)
-                                .padding(horizontal = 8.dp, vertical = 2.dp)
-                        ) {
-                            ClanDisplayText(
-                                text = AppStrings.App.DEFAULT_TH_LEVEL,
-                                fontSize = 12.sp,
-                                color = Color(0xFF23140B)
-                            )
-                        }
                     }
                 },
                 actions = {
@@ -162,6 +145,16 @@ fun ClanDashboardScreen(
             // 4. Common Action Buttons Showcase
             item {
                 ActionButtonsShowcase()
+            }
+
+            // 5. Logout Button
+            item {
+                Spacer(modifier = Modifier.height(ClanTheme.spacing.small))
+                ClanButton(
+                    text = AppStrings.Common.LOGOUT,
+                    onClick = onLogout,
+                    variant = ClanButtonVariant.Danger
+                )
             }
 
             item { Spacer(modifier = Modifier.height(ClanTheme.spacing.large)) }
